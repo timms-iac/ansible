@@ -22,3 +22,6 @@
 [submodule "roles/netplan"]
 	path = roles/netplan
 	url = git@github.com:timms-iac/ansible-netplan.git
+[submodule "roles/kvm"]
+	path = roles/kvm
+	url = git@github.com:timms-iac/ansible-kvm.git
