@@ -7,3 +7,15 @@
 [submodule "roles/tplink"]
 	path = roles/tplink
 	url = git@github.com:timms-iac/ansible-tplink.git
+[submodule "roles/shelly"]
+	path = roles/shelly
+	url = git@github.com:timms-iac/ansible-shelly.git
+[submodule "roles/netbox"]
+	path = roles/netbox
+	url = git@github.com:timms-iac/ansible-netbox.git
+[submodule "roles/tinkerbell"]
+	path = roles/tinkerbell
+	url = git@github.com:timms-iac/ansible-tinkerbell.git
+[submodule "roles/talos"]
+	path = roles/talos
+	url = git@github.com:timms-iac/ansible-talos.git
