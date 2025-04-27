@@ -1,0 +1,9 @@
+[submodule "roles/sodola"]
+	path = roles/sodola
+	url = git@github.com:timms-iac/ansible-sodola.git
+[submodule "roles/openwrt"]
+	path = roles/openwrt
+	url = git@github.com:timms-iac/ansible-openwrt.git
+[submodule "roles/tplink"]
+	path = roles/tplink
+	url = git@github.com:timms-iac/ansible-tplink.git
