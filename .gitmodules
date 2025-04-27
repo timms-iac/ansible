@@ -19,3 +19,6 @@
 [submodule "roles/talos"]
 	path = roles/talos
 	url = git@github.com:timms-iac/ansible-talos.git
+[submodule "roles/netplan"]
+	path = roles/netplan
+	url = git@github.com:timms-iac/ansible-netplan.git
