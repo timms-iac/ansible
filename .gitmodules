@@ -25,3 +25,6 @@
 [submodule "roles/kvm"]
 	path = roles/kvm
 	url = git@github.com:timms-iac/ansible-kvm.git
+[submodule "roles/sysfs"]
+	path = roles/sysfs
+	url = git@github.com:timms-iac/ansible-sysfs.git

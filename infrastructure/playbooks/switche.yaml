@@ -1,0 +1,16 @@
+---
+- hosts: switche
+  gather_facts: false
+  become: false
+
+  pre_tasks:
+  - ansible.builtin.debug:
+      msg: Configure Switche
+    delegate_to: localhost
+
+  roles:
+  - role: sodola
+    tags: sodola
+
+  - role: tplink
+    tags: tplink

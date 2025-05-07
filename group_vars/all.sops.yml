@@ -1,6 +1,6 @@
 #ENC[AES256_GCM,data:a96okMr/KPUtT0DgsPcObO8sylbONHmAsgv+vEaw5X4L70rquiUXuhrChiH6ODDjuTmYTDYFjMnA5Q==,iv:kxFVLRnMCjTfjhaaGA9xgl6/9yrTIVBvRmWNoYDO7Fk=,tag:N4GgaJNTIhNhs7glhP1lWQ==,type:comment]
 ansible_nb_token: ENC[AES256_GCM,data:o/lC3mb6/PYH/Mcuy02BhDEpEd4sVsanmTlUyPY/V2Gob9pvV4BNLg==,iv:5iLJsO6rdrXQtPTWcOqqdBklP0PSXw83s36f6Vp+5BM=,tag:OCafRySXLdMLXHXyhqtI/w==,type:str]
-ansible_nb_url: ENC[AES256_GCM,data:qihTu5PYPjyDeQ0I0iFZ6cu5Ow==,iv:ilqcOy1h43Xx+ToP/s96v11dwELy4J0z7a6lPhIxrW0=,tag:lGntDP+i192m6796Mbf5XA==,type:str]
+ansible_nb_url: ENC[AES256_GCM,data:tZa1ujzNgLNkQpEqiHKNSdV2ag==,iv:iD4ZyjI1yFKJAGi9MUCdTRwEMrx+mY/avZkyWe274xI=,tag:muhkntmnzRl91NmZhCfo+Q==,type:str]
 default_user: ENC[AES256_GCM,data:pNs7FcQmDg==,iv:2ffSzQGI1mkMwDMQTBilvUxxefDLmEV5dw+Uq0J++e0=,tag:yeRKsoOZxDxlDqBvbvsUJQ==,type:str]
 default_user_password_clear: ENC[AES256_GCM,data:RAWry4DEMeQ=,iv:I22+872Wf0wdQdPO+Lj4qZgv3eQPtfoZRLnrLBlwGZ8=,tag:jlUTInry155cY6WP14QBjA==,type:str]
 default_user_password_sodola: ENC[AES256_GCM,data:P0/c3RgQmgQ10IgcC1sOCex4nqE1fAu7S2GAmxLSFSZo/YS/qdctGQTlVMQ=,iv:0ZCoNBloznzUvzgQq7IeqkcYfQCoeLPhQ/WLXGXZoH8=,tag:nSg1rKGAa75MKBPqFP1jkw==,type:str]
@@ -210,7 +210,7 @@ sops:
             MHpJbnBYekhmR3ZRYkphYjlYNjBBR0EKgDJK5wsWC/K/uuVSbCuMBISczLBYcoqO
             K7l+0ieYs884hN1rMOZr4yHmApKbabpREKoZLCEVxEf2L/x7AbvLGA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-28T15:06:36Z"
-    mac: ENC[AES256_GCM,data:chIpDGrIa7p+fKx/OVBKvwGs68jmvAPTbv3+604CoCi1Kao0Mq0z2Kas7VcBIRgjVfkEUH6WZLPU+3mSTAdRxUaRzx2nzHtcf5vX3lDSBPVYMAMfIHhgceu7UUEXMXi4gIOC+uzVWYLHXkxUIGvZXXy8FXc8ZQ+stGVvFQ3Sgjk=,iv:7Ubdj0cXmlKL1PWlKtQa8+wEgxD3ZhjFKn34lND4iEE=,tag:yFBNWKgVSkRwcYSkzK2wrg==,type:str]
+    lastmodified: "2025-05-01T18:30:30Z"
+    mac: ENC[AES256_GCM,data:SAR7GjdMpUhPph4QPwDXgn/UToU7ZN5ur8NwL59F8RQ3f4KxTYCqtVVUR1p+oKPuiD+5TKDmfvrlwaUte0td1bzuzA6uVd66IfFEHTzBnSWu+mUY49bgGi/ZrBN5oTq19WFHAg2lZXhbs/SF4I4Ax7dGYsHs0/53CV/YeZfEW14=,iv:t63Tv8VuKCGw3JDbIoIMfECSWmOcNWtvKLtUIdaQ0nk=,tag:HQpp4iShYIiSwzaTJpBezg==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.10.2

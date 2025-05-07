@@ -1,0 +1,6 @@
+all:
+  children:
+    deployment:
+      hosts:
+        kiab:
+          ansible_host: 172.16.100.3

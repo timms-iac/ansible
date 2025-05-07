@@ -1,0 +1,73 @@
+---
+- hosts: deployment
+  pre_tasks:
+  - ansible.builtin.debug:
+      msg: Configure Deployment Hosts
+
+  - name: Deployment | Apps | Install tftp
+    ansible.builtin.package:
+      name: tftpd-hpa
+      state: present
+    become: true
+
+  - name: Deployment | Apps | Configure  tftp
+    ansible.builtin.template:
+      src: templates/tftpd-hpa.j2
+      dest: /etc/default/tftpd-hpa
+      owner: root
+      group: root
+      mode: '0644'
+    become: true
+
+  - name: Change file ownership, group and permissions
+    ansible.builtin.file:
+      path: "{{ tftp_dir }}"
+      owner: nobody
+      group: nogroup
+      mode: '0777'
+      state: directory
+    become: true
+
+  - name: Deployment | Apps | Start service tftp
+    ansible.builtin.service:
+      name: tftpd-hpa
+      state: restarted
+      enabled: true
+    become: true
+
+  roles:
+  - name: Deployment | Hypervisor | Netplan
+    role: netplan
+    become: true
+    netplan_enabled: true
+    netplan_backup_existing: true
+    netplan_configuration_netbox: true
+      #    netplan_configuration: "{{ my_netplan_configuration }}"
+    tags: netplan
+
+  - name: Deployment | Hypervisor | Talos
+    role: talos
+    talos_has_dhcp: "{{ my_talos_has_dhcp }}"
+    talos_libvirt_images: "{{ my_libvirt_images }}"
+    talos_networks: "{{ my_talos_networks }}"
+    talos_instances: "{{ my_talos_instances }}"
+    talos_dir: "{{ my_talos_dir }}"
+    talos_clusters: "{{ my_talos_clusters }}"
+    tags: talos
+
+  - name: Deployment | Apps | Tinkerbell
+    role: tinkerbell
+    tags: tinkerbell
+   
+  - name: Deployment | Apps | Netbox
+    role: netbox
+    tags: netbox
+
+      #  - name: Deployment | Apps | Forgejo
+      #    role: forgejo
+      #    tags: forgejo
+
+  tasks:
+  - name: Deployment | Hypervisor | Provide NAT service
+    ansible.builtin.command: "iptables -t nat -A POSTROUTING -o {{ my_legacy_bridge }} -j MASQUERADE"
+    become: true

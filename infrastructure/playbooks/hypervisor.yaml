@@ -1,0 +1,227 @@
+---
+- hosts: hypervisor
+  pre_tasks:
+  - ansible.builtin.debug:
+      msg: Configure Hypervisor for {{ inventory_hostname_short }}
+
+  - name: Hypervisor | Basics | Set a hostname
+    become: true
+    ansible.builtin.hostname:
+      name: "{{ inventory_hostname_short }}"
+
+  - name: Hypervisor | Basics | Set a user password
+    become: true
+    ansible.builtin.user:
+      name: "{{ default_user }}"
+      password: "{{ default_user_password }}"
+      comment: "{{ default_user_comment }}"
+
+  - name: Hypervisor | Basics | Update repositories cache and dist-upgrade
+    become: true
+    ansible.builtin.apt:
+      upgrade: dist
+      update_cache: yes
+
+  - name: Hypervisor | Basics | Make sure amdgpu-install is installed
+    become: true
+    ansible.builtin.apt:
+      deb: "{{ default_amdgpu }}"
+    tags: amdgpu
+
+  - name: Hypervisor | Basics | Run amdgpu-install
+    become: true
+    ansible.builtin.command: "amdgpu-install -y --accept-eula"
+    tags: amdgpu
+
+  - name: Hypervisor | Basics | Install expect
+    become: true
+    ansible.builtin.apt:
+      name: expect
+
+  - name: Hypervisor | Basics | Remove flash partition
+    become: true
+    community.general.parted:
+      device: /dev/sda
+      number: 2
+      state: absent
+    tags: remove_flash
+
+  - name: Hypervisor | Basics | Resize root partition to 25GB
+    become: true
+    ansible.builtin.shell: |
+      spawn sudo parted /dev/sda
+      expect "(parted)" {send "p\n"}
+      expect "(parted)" {send "resizepart 1 25GiB\n"}
+      expect "Yes/No?" {send "y\n"}
+      expect "Yes/No?" {send "y\n"}
+      expect "(parted)" {send "p\n"}
+      expect "(parted)" {send "q\n"}
+    args:
+      executable: /usr/bin/expect
+      #    community.general.parted:
+      #      device: /dev/sda
+      #      number: 1
+      #      state: present
+      #      part_end: 20GiB
+      #      resize: true
+      #      label: gpt
+      #      name: cloudimg-rootfs
+      #      unit: GiB
+      #      align: undefined
+
+  - name: Hypervisor | Basics | Create flash partition
+    become: true
+    community.general.parted:
+      device: /dev/sda
+      number: 2
+      state: present
+      part_start: "25GiB"
+      part_end: "100%"
+      flags: [lvm]
+      label: gpt
+      name: flash
+      align: optimal
+
+  - name: Hypervisor | Basics | Create volume group flash
+    become: true
+    community.general.lvg:
+      vg: flash
+      pvs: /dev/sda2
+      pvresize: true
+
+  - name: Hypervisor | Basics | Resize rootfs
+    become: true
+    ansible.builtin.command: "resize2fs /dev/sda1"
+
+  - name: Hypervisor | Basics | Create ceph0 partition
+    become: true
+    community.general.parted:
+      device: /dev/nvme0n1
+      number: 1
+      state: present
+      part_start: "0%"
+      part_end: "100%"
+      flags: [lvm]
+      label: gpt
+      name: ceph0
+      align: optimal
+    when: ansible_facts.devices.nvme0n1 is defined and ansible_facts.devices.nvme0n1.partitions.nvme0n1p1 is not defined
+
+  - name: Hypervisor | Basics | Create ceph1 partition
+    become: true
+    community.general.parted:
+      device: /dev/nvme1n1
+      number: 1
+      state: present
+      part_start: "0%"
+      part_end: "100%"
+      flags: [lvm]
+      label: gpt
+      name: ceph1
+      align: optimal
+    when: ansible_facts.devices.nvme1n1 is defined and ansible_facts.devices.nvme1n1.partitions.nvme1n1p1 is not defined
+
+  - name: Hypervisor | Basics | Update Facts
+    become: true
+    ansible.builtin.gather_facts:
+
+  - name: Hypervisor | Basics | Create volume group ceph0
+    become: true
+    community.general.lvg:
+      vg: ceph0
+      pvs: /dev/nvme0n1p1
+      pvresize: true
+    when: ansible_facts.devices.nvme0n1 is defined and ansible_facts.device_links.ids.nvme0n1p1[0] is not match("lvm-pv-uuid-*")
+
+  - name: Hypervisor | Basics | Create volume group ceph1
+    become: true
+    community.general.lvg:
+      vg: ceph1
+      pvs: /dev/nvme1n1p1
+      pvresize: true
+    when: ansible_facts.devices.nvme1n1 is defined and ansible_facts.device_links.ids.nvme1n1p1[0] is not match("lvm-pv-uuid-*")
+
+  - name: Hypervisor | Basics | Install KVM/libvirt
+    become: true
+    ansible.builtin.apt:
+      pkg:
+        - libvirt-clients
+        - libvirt-daemon-system
+        - libvirt-daemon
+        - libvirt-daemon-driver-qemu
+        - libvirt-daemon-system-systemd
+        - qemu-kvm
+        - qemu-system-x86
+        - python3-libvirt
+        - linux-tools-kvm
+        - linux-kvm
+        - python3-lxml
+        - openvswitch-switch
+        - linux-generic-hwe-24.04 # for i915 graphics
+        - lldpd
+
+  - name: Hypervisor | Basics | Set a user groups
+    become: true
+    ansible.builtin.user:
+      name: "{{ default_user }}"
+      append: true
+      groups:
+        - kvm
+        - libvirt
+
+  - name: Hypervisor | Basics | Enable quiet nosplash boot
+    become: true
+    ansible.builtin.lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="((?:(?!quiet nosplash).)*?)"$'
+      line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 quiet nosplash"'
+      backup: true
+      backrefs: true
+    notify: update-grub
+
+  - name: Hypervisor | Basics | Enable IOMMU
+    become: true
+    ansible.builtin.lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="((?:(?!intel_iommu=on iommu=pt).)*?)"$'
+      line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on iommu=pt"'
+      backup: true
+      backrefs: true
+    notify: update-grub
+
+  - name: Hypervisor | Basics | Upgrade Firmware
+    become: true
+    ansible.builtin.command: "/usr/bin/fwupdmgr update -y  --no-reboot-check"
+    tags: do_firmware_upgrades
+
+
+  roles:
+  - name: Hypervisor | Basics | SysFS
+    role: sysfs
+    become: true
+
+  - name: Hypervisor | Basics |  Netplan
+    role: netplan
+    become: true
+    netplan_enabled: true
+    netplan_backup_existing: true
+    netplan_configuration_netbox: true
+      #    netplan_configuration: "{{ my_netplan_configuration }}"
+
+  - name: Hypervisor | Basics | Talos
+    role: talos
+    become: true
+    talos_has_dhcp: "{{ my_talos_has_dhcp }}"
+    talos_undefine_networks: false
+    talos_networks: "{{ my_networks }}"
+    talos_undefine_pools: false
+    talos_undefine_instances: false
+    talos_instances: "{{ my_talos_instances }}"
+    talos_dir: "{{ my_talos_dir }}"
+    talos_clusters: "{{ my_talos_clusters }}"
+    tags: talos
+
+  handlers:
+  - name: update-grub
+    become: true
+    shell: /usr/sbin/update-grub

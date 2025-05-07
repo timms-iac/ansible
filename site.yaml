@@ -1,0 +1,9 @@
+---
+- name: Configure Deployment Hosts
+  ansible.builtin.import_playbook: infrastructure/playbooks/deployment.yaml
+
+- name: Configure Switche
+  ansible.builtin.import_playbook: infrastructure/playbooks/switche.yaml
+
+- name: Configure Hypervisor Hosts
+  ansible.builtin.import_playbook: infrastructure/playbooks/hypervisor.yaml
