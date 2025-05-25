@@ -1,5 +1,5 @@
 ---
-- hosts: switche
+- hosts: switch
   gather_facts: false
   become: false
 
@@ -10,7 +10,7 @@
 
   roles:
   - role: sodola
-    tags: sodola
+    when: platform == "soos"
 
   - role: tplink
-    tags: tplink
+    when: platform == "tpos"

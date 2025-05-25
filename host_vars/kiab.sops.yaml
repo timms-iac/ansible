@@ -117,6 +117,7 @@ netbox_superuser_api_token: ENC[AES256_GCM,data:xpOw3s96JEfh0P7kGG7CDEiqW7tCQSz9
 netbox_secret_key: ENC[AES256_GCM,data:ZXQyj19iBqH41MqWzVpGRP+bnAP/LrKAW7kS+n/cH6HN+UN9jZOL4TJSV3LgIlOpMwIWe9zqDSybDtmjV4dptUyt8XxUmPiAG5mZpqf6BjpKXgbm6gsEXcP1efTq0v0ubCY=,iv:reLVziAlu9/GVxCc05GZblFNDLhYAcVNl2vS1sHsYQs=,tag:NAILRNmZO0yTTAm8mDYHaw==,type:str]
 netbox_ansible_password: ENC[AES256_GCM,data:4e+n4CZOS/44rzhjeToze7Us5eVPLln4GuxUuXL9xHrjdzdRlMWK0H+QGWxQeK2JuTN3mHMvnhT+656I9NSfSZEH0ksOG9bOeEJogkv9lgYwBkksLWKBMKmfm46bkFMz9vgA,iv:I8nB8Pqnr/jPhoiYu9YtyAlzqhR12D7bAZ5XyYAVKrE=,tag:w8sLVCjCd4MYDV+MOk9ltA==,type:str]
 netbox_ansible_token: ENC[AES256_GCM,data:o3mNG2MESJh75j07R1xjrbaOW7yzSTJSodka3sHCEpSGQg+6nAmEzgeC/b7SaJ5dB39/c3xww0LkU9DeBJJdHcyZul2Jk9xb+WckOw8xOBHcCVVyf33gpI6EzwbfpRiaEv9jNfp6YpLqI08nPmqOG3JNMrzuAwZ5GRa1rUqV,iv:f0TgGPTEStvfibjN3blm9M+UdLa96AyVN1SWv8gMSQc=,tag:YNPRznXfIK93sJCl/jSCQQ==,type:str]
+netbox_ansible_ro_token: ENC[AES256_GCM,data:MAMLVULLDol+etAcJETMjbFrsoLaBEzS9dmORXBoqBIPRic9hksWmOKTD6ZrXnJAvusX8Hnmj+H6dZCTnqW5P1nznn+aDtb1ELb3J/r0iD7/T3UX2gK8tsANYJT1v3f6citEV3mH0jkvU/GOp/7gLx7A6d+uzgjeIWmeNLS+KFgm,iv:1uV/mpTdM+6CcFT0zH4+PB6aI4WELkFxOXFBAggV/7g=,tag:Qj/3TzyqWhGbCT/foTHM7Q==,type:str]
 netbox_release_namespace: ENC[AES256_GCM,data:DQOaY4QasCbKs7UY,iv:uBoPB4gMY/gsepIMOCrYPTYFqBL0y3uGKdoMOnZ69UY=,tag:6rCokng9d1WZfdBFOX22gg==,type:str]
 netbox_loadbalancer_ip: ENC[AES256_GCM,data:ybLoJVgdhwiw84mD,iv:AY/bSI0bllT+YygoHMZQGR9YFw4AzGdIry/9hBykbB0=,tag:wc1xFbBupMXTcx4nyDfAbg==,type:str]
 netbox_build_repo_user: ENC[AES256_GCM,data:4ibVznfjLg==,iv:vR56uhG6gOjCM58MUWxTPAoVOtEx0z7NwzgnFtW43WA=,tag:mavM5bfOkX8qQmG7utK1sA==,type:str]
@@ -147,7 +148,7 @@ sops:
             UG8vVi9yT2NaS2NuQm5tVzhKanFGM3MKUPhlSeD8xqGyZaIDuZ02pfdam+vRAq5E
             /fP+F48m+oj1+vnpJOEcP1mmjaPqn6gCSEXkfBkuHde+VOg2wCIyWw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-05-01T18:33:57Z"
-    mac: ENC[AES256_GCM,data:IJWrBeux7paIOEbBuBP2wx14CCKrpg4e6cWxb6g2Fue7+ccECOksZufS3VBxpHZbDxj6PH1QmE+ffeXQudVRpJ5XdssGBpYDslNHSWUB6pKS7PzKBVlQTUXFaXXoSvvBzb7He5iY3UFI5kvTGWSNPXtJ87dScOQ31HWAo0JIfH8=,iv:LJZOQZu3zIYccRya+Ix8kAXuplbe1u3THzU6O5e2Np4=,tag:PnsiL8iixw+FFe+d7hkF0g==,type:str]
+    lastmodified: "2025-05-24T09:20:53Z"
+    mac: ENC[AES256_GCM,data:i6NWiF/iJUmp9KqJD9nNLmh9+YM0rw9YbuWEu8MD16v60/vqTChhfIlFueBwBITmeNRdvt/SxGFjIQdF/eaPaHMvItx3zZt0GA9Bhab3Egc2/toZAgGP89ykdfhM3pd56k5Q5s42G79xC35Wl4z3ijij8eBHzbrMoEzEkN+OK1c=,iv:EhX8sNN/Tc6QZrn5G4wPeW0OzOqzEmGZcXAmZzc8uw0=,tag:vkY3O5nIourU/lxLywZbZw==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.10.2

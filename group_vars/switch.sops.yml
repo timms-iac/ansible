@@ -1,0 +1,33 @@
+sodola_backup_dir: ENC[AES256_GCM,data:kXEYUWAM0BC5jmoDlLx6gK/0,iv:RDPSvk199VWoKxAexjCikyV1qpaljy+oujJVK7czQH0=,tag:TWV6YcbP1muWGAJzT7dp9g==,type:str]
+sodola_tftp_dir: ENC[AES256_GCM,data:hpGp/vOI3JOM,iv:ZIoZlsz5StDV49Kc0A59AX6mO3jKdysdYy28yeZaGJQ=,tag:/9JIF/m+UDAbNJmM3RfUkA==,type:str]
+sodola_tftp_ip: ENC[AES256_GCM,data:tsq05JgAizr3OcbW,iv:9JsyZc7Bau65BYCIBu9WYn9yXWTpTTOZE/GWJzHLXKU=,tag:R1d3Ul+nG1q0haGK6/CS6A==,type:str]
+sodola_default_user: ENC[AES256_GCM,data:gbvOI0n9zw==,iv:QY8e7GWV+icunmHMK6+37dAW51iJp/xuUdbWPztJKEc=,tag:oQQ4uNKmdnZ06zJdJY6xfg==,type:str]
+sodola_default_user_password: ENC[AES256_GCM,data:+/Ii8NlV6cIbI0ERiuH47J0HqaAfNFF5oXOa1f/XqPSum0wJHJG8zdjswJw=,iv:wCCuTT0U6yOn2Klfsuu6UOK4nP5TWZMS/NIPqZ+kawc=,tag:Q15O8gA9EBSfibtdV5d3Rg==,type:str]
+ansible_connection: ENC[AES256_GCM,data:HrQHi72vp74ECl9LxXs8AA==,iv:SCOK+rTghwDgBwQXhTc+HCJIwjCXoAQX6Ryi3sAu4/Q=,tag:HSEcEnu4qlw6+Y3NjRLxIg==,type:str]
+ansible_snmp_community: ENC[AES256_GCM,data:girRerD+cQ9rBoIfAystnA==,iv:j/d1DgqL2TLZLD7v9+jinupvgjUlKB27SLfHD1ySLu4=,tag:qeGamx3E7ceskTiDZvZ8XA==,type:str]
+ansible_snmp_retries: ENC[AES256_GCM,data:HkY=,iv:dDECKDDOtU/3rbhy5ADhJqP5BGNJ3ZeO2VvA4eZz+dk=,tag:ZdjsYIfvdpjbcvdiBNZ6Cw==,type:int]
+ansible_snmp_timeout: ENC[AES256_GCM,data:CtnmTNpw/Vjj,iv:+SwReiq/Ob8iA+s3kxmM7oBNzoWscnJsdxtTVqXnZ3E=,tag:2o3+NPebqzf/L70j+VY+Gg==,type:int]
+sops:
+    age:
+        - recipient: age13f33gq2clxesr7gn93vaezke262pklc532ayggveqyfr075yhvnspmz6tw
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBibnV5ZFZObXhyRzJLTG50
+            WXlMUElEbU9GK2xTaXkwRWx3N2QwR2dwb0I4CnZrUkZkcGtSbTI1ZklQdm9XYW90
+            NGd6TkRIRjk2WlJUT0xEZ0JwN1BlZWMKLS0tIDE0QkVjSDdxOFBHZzg3VUtYWjIz
+            SVIxME5BVWhmWkdPRW13TTJZWm5wYTQKoVuYIJ+Xi0B1K8RQG/UReav1KZV56ngk
+            eLk+b3fJH4COG38lXbwgkkvpByAsK981+Yu8Hl+NaNC+K1OL3HAtfA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fjv87t0z6mh9nyl3emvwafaht45gk98kmfjt720lfveg8t02m3fqtk0vlm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBYR2NDTkVPQ2VFOWI0NlRM
+            M0Z6OEJha3d5a1FQTno2b3BvWVdpemw3dm1vCjVwZGtCZDVTL0tvMUh2OGJ3TTVI
+            UDlKQ2VkNU1WZkE3NmtjYlJrbnVnd2MKLS0tIENSTk15S1NqVDNIZDcwd0RRWXE4
+            ZktITDZoK2R1cjEzaG12VTZGSGp3bmcKuW+hXGSLuTTUKj16cNJl3Az6PokGsJrg
+            Q9WJhVQJAtnDIae0TXj0ELsUkG1H69JOBDHP73MfqtiwF9dV5ceYew==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-05-25T15:58:13Z"
+    mac: ENC[AES256_GCM,data:NK4oyBD4CfBDYlF7VHKtjK3IoLQEak8w1SesDNl5Ss2ETpkN3ToNX1PhHuSoY6hg66gLSi4ilzCO4GL2igliTBjl3fTY1qPGqRoGfg5eJoZck7dgBjuNNbglw99znlH1SbOQVGnA3ZfIgisXg8xPPvxR1pJEN3hknZAXvll6kOE=,iv:PYDkwU/sLctrX0BRAz37nDyhOLeEFhuNei9Z9wxw3NA=,tag:c+UGoPBdD1/LUMhorKoEcg==,type:str]
+    unencrypted_suffix: _unencrypted
+    version: 3.10.2
