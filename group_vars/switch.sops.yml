@@ -1,6 +1,4 @@
 sodola_backup_dir: ENC[AES256_GCM,data:kXEYUWAM0BC5jmoDlLx6gK/0,iv:RDPSvk199VWoKxAexjCikyV1qpaljy+oujJVK7czQH0=,tag:TWV6YcbP1muWGAJzT7dp9g==,type:str]
-sodola_tftp_dir: ENC[AES256_GCM,data:hpGp/vOI3JOM,iv:ZIoZlsz5StDV49Kc0A59AX6mO3jKdysdYy28yeZaGJQ=,tag:/9JIF/m+UDAbNJmM3RfUkA==,type:str]
-sodola_tftp_ip: ENC[AES256_GCM,data:tsq05JgAizr3OcbW,iv:9JsyZc7Bau65BYCIBu9WYn9yXWTpTTOZE/GWJzHLXKU=,tag:R1d3Ul+nG1q0haGK6/CS6A==,type:str]
 sodola_default_user: ENC[AES256_GCM,data:gbvOI0n9zw==,iv:QY8e7GWV+icunmHMK6+37dAW51iJp/xuUdbWPztJKEc=,tag:oQQ4uNKmdnZ06zJdJY6xfg==,type:str]
 sodola_default_user_password: ENC[AES256_GCM,data:+/Ii8NlV6cIbI0ERiuH47J0HqaAfNFF5oXOa1f/XqPSum0wJHJG8zdjswJw=,iv:wCCuTT0U6yOn2Klfsuu6UOK4nP5TWZMS/NIPqZ+kawc=,tag:Q15O8gA9EBSfibtdV5d3Rg==,type:str]
 ansible_connection: ENC[AES256_GCM,data:HrQHi72vp74ECl9LxXs8AA==,iv:SCOK+rTghwDgBwQXhTc+HCJIwjCXoAQX6Ryi3sAu4/Q=,tag:HSEcEnu4qlw6+Y3NjRLxIg==,type:str]
@@ -27,7 +25,7 @@ sops:
             ZktITDZoK2R1cjEzaG12VTZGSGp3bmcKuW+hXGSLuTTUKj16cNJl3Az6PokGsJrg
             Q9WJhVQJAtnDIae0TXj0ELsUkG1H69JOBDHP73MfqtiwF9dV5ceYew==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-05-25T15:58:13Z"
-    mac: ENC[AES256_GCM,data:NK4oyBD4CfBDYlF7VHKtjK3IoLQEak8w1SesDNl5Ss2ETpkN3ToNX1PhHuSoY6hg66gLSi4ilzCO4GL2igliTBjl3fTY1qPGqRoGfg5eJoZck7dgBjuNNbglw99znlH1SbOQVGnA3ZfIgisXg8xPPvxR1pJEN3hknZAXvll6kOE=,iv:PYDkwU/sLctrX0BRAz37nDyhOLeEFhuNei9Z9wxw3NA=,tag:c+UGoPBdD1/LUMhorKoEcg==,type:str]
+    lastmodified: "2025-05-25T19:48:49Z"
+    mac: ENC[AES256_GCM,data:LU54tHYTFSf1swIEZQsy8N9W8RuHXHgjKdJQ7FydtzIfaFcT1EnGHXIYpqHDzOUCv0W2XsR6bC/vIjFz9fO1h2ZJyz1HadrEWHePdHAN99HaqbMxJRF+5Roy5u4eGuMtrgeG798sQK9sZgt1fvU2QhX2NawE/SqOKSEZlFhmcqQ=,iv:XORQ4uStQk/kqN5k/emxQFjmvaz98mGlAeBD9bm4+Co=,tag:4sGi4k2+1oMmcHVEgRnJYg==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.10.2
