@@ -4,37 +4,6 @@
   - ansible.builtin.debug:
       msg: Configure Deployment Hosts
 
-  - name: Deployment | Apps | Install tftp
-    ansible.builtin.package:
-      name: tftpd-hpa
-      state: present
-    become: true
-
-  - name: Deployment | Apps | Configure  tftp
-    ansible.builtin.template:
-      src: templates/tftpd-hpa.j2
-      dest: /etc/default/tftpd-hpa
-      owner: root
-      group: root
-      mode: '0644'
-    become: true
-
-  - name: Change file ownership, group and permissions
-    ansible.builtin.file:
-      path: "{{ tftp_dir }}"
-      owner: nobody
-      group: nogroup
-      mode: '0777'
-      state: directory
-    become: true
-
-  - name: Deployment | Apps | Start service tftp
-    ansible.builtin.service:
-      name: tftpd-hpa
-      state: restarted
-      enabled: true
-    become: true
-
   roles:
   - name: Deployment | Hypervisor | Netplan
     role: netplan
@@ -62,6 +31,10 @@
   - name: Deployment | Apps | Netbox
     role: netbox
     tags: netbox
+
+  - name: Deployment | Apps | TFTP
+    role: tftp
+    tags: tftp
 
       #  - name: Deployment | Apps | Forgejo
       #    role: forgejo
