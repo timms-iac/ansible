@@ -28,3 +28,6 @@
 [submodule "roles/sysfs"]
 	path = roles/sysfs
 	url = git@github.com:timms-iac/ansible-sysfs.git
+[submodule "roles/tftp"]
+	path = roles/tftp
+	url = git@github.com:timms-iac/ansible-tftp.git
