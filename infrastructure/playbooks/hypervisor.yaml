@@ -159,6 +159,7 @@
         - openvswitch-switch
         - linux-generic-hwe-24.04 # for i915 graphics
         - lldpd
+        - lm-sensors
 
   - name: Hypervisor | Basics | Set a user groups
     become: true
@@ -207,6 +208,11 @@
     netplan_backup_existing: true
     netplan_configuration_netbox: true
       #    netplan_configuration: "{{ my_netplan_configuration }}"
+    tags:  netplan
+
+  - name: Hypervisor | Basics |  KVM
+    role: kvm
+    tags: kvm
 
   - name: Hypervisor | Basics | Talos
     role: talos
