@@ -7,3 +7,7 @@
 
 - name: Configure Hypervisor Hosts
   ansible.builtin.import_playbook: infrastructure/playbooks/hypervisor.yaml
+
+- name: Configure Virtual Machines
+  ansible.builtin.import_playbook: infrastructure/playbooks/virtual-machine.yaml
+

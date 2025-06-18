@@ -1,0 +1,67 @@
+---
+- hosts: virtual_machines
+  pre_tasks:
+  - ansible.builtin.debug:
+      msg: Configure Virtual-Machines for {{ inventory_hostname_short }}
+
+  - name: Virtual-Machines | Basics | Set a hostname
+    become: true
+    ansible.builtin.hostname:
+      name: "{{ inventory_hostname_short }}"
+
+  - name: Virtual-Machines | Basics | Set a user password
+    become: true
+    ansible.builtin.user:
+      name: "{{ default_user }}"
+      password: "{{ default_user_password }}"
+      comment: "{{ default_user_comment }}"
+
+  - name: Virtual-Machines | Basics | Update repositories cache and dist-upgrade
+    become: true
+    ansible.builtin.apt:
+      upgrade: dist
+      update_cache: yes
+
+  - name: Virtual-Machines | Basics | Install expect
+    become: true
+    ansible.builtin.apt:
+      name: expect
+
+  - name: Virtual-Machines | Basics | Resize root partition to 100%
+    become: true
+    ansible.builtin.shell: |
+      spawn sudo parted /dev/vda
+      expect "(parted)" {send "p\n"}
+      expect "Fix/Ignore" {send "f\n"}
+      expect "(parted)" {send "resizepart 1 100%\n"}
+      expect "Yes/No?" {send "y\n"}
+      expect "(parted)" {send "p\n"}
+      expect "(parted)" {send "q\n"}
+    args:
+      executable: /usr/bin/expect
+
+  - name: Virtual-Machines | Basics | Resize rootfs
+    become: true
+    ansible.builtin.command: "resize2fs /dev/vda1"
+
+  - name: Virtual-Machines | Basics | Install some tools
+    become: true
+    ansible.builtin.apt:
+      pkg:
+        - vim
+        - less 
+
+  roles:
+          #  - name: Virtual-Machines | Basics | SysFS
+          #    role: sysfs
+          #    become: true
+          #
+  - name: Virtual-Machines | Basics |  Netplan
+    role: netplan
+    become: true
+    netplan_enabled: true
+    netplan_backup_existing: true
+    netplan_configuration_netbox: true
+      #    netplan_configuration: "{{ my_netplan_configuration }}"
+    tags:  netplan
+
