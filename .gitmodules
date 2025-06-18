@@ -31,3 +31,6 @@
 [submodule "roles/tftp"]
 	path = roles/tftp
 	url = git@github.com:timms-iac/ansible-tftp.git
+[submodule "roles/carp"]
+	path = roles/carp
+	url = git@github.com:timms-iac/ansible-carp.git
